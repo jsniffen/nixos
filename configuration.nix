@@ -82,18 +82,27 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
+    discord
     firefox
-    git
     kitty
+    git
+    gcc
+    ghostty
+    gnome-themes-extra
+    google-chrome
+    kdePackages.dolphin
+    hyprpaper
     spotify
     vim
+    waybar
     wget
+    rofi-wayland
+    wl-clipboard
   ];
 
-  programs.sway.enable = true;
+  # programs.sway.enable = true;
+  programs.hyprland.enable = true;
 
   services.blueman.enable = true;
 
@@ -108,13 +117,6 @@ in
       enable = true;
       bashrcExtra = ''
         export PS1=" \w $ "
-      '';
-    };
-    programs.kitty = {
-      enable = true;
-      extraConfig = ''
-        shell_integration no-rc no-cursor
-        enable_audio_bell no
       '';
     };
     programs.vim = {
